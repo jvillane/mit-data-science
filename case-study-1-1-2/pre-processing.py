@@ -31,7 +31,7 @@ with open('dictionary.csv', mode='w') as dictionaryCsv:
                 with open(abstractPath, mode='w') as abstractTxt:
                     abstractWriter = csv.DictWriter(abstractTxt, fieldnames=['text'])
                     # abstractWriter.writeheader()
-                    abstractWriter.writerow({'text': abstract})
+                    abstractWriter.writerow({'text': './' + abstract})
 
                 tokenizer = RegexpTokenizer(r'\w+')
                 abstractWords = tokenizer.tokenize(abstract)
