@@ -9,9 +9,7 @@ with open('dictionary.csv', mode='w') as dictionaryCsv:
     dictionaryWriter = csv.DictWriter(dictionaryCsv, fieldnames=['term'])
     # dictionaryWriter.writeheader()
 
-    with open('alldocs.txt', mode='w') as abstractListCsv:
-        abstractListWriter = csv.DictWriter(abstractListCsv, fieldnames=['path'])
-        # dictionaryWriter.writeheader()
+    with open('alldocs.txt', mode='w') as abstractListTxt:
 
         with open('abstract_list.csv') as abstractCsv:
             csvReader = csv.reader(abstractCsv, delimiter=',')
@@ -25,13 +23,11 @@ with open('dictionary.csv', mode='w') as dictionaryCsv:
                 print name
                 abstract = row[4].lower()
 
-                abstractPath = 'abstracts/' + name + '.txt'
-                abstractListWriter.writerow({'path': abstractPath})
+                abstractPath = './abstracts/' + name + '.txt\n'
+                abstractListTxt.write(abstractPath)
 
-                with open(abstractPath, mode='w') as abstractTxt:
-                    abstractWriter = csv.DictWriter(abstractTxt, fieldnames=['text'])
-                    # abstractWriter.writeheader()
-                    abstractWriter.writerow({'text': './' + abstract})
+                with open(abstractPath, mode='w+') as abstractTxt:
+                    abstractTxt.write(abstract)
 
                 tokenizer = RegexpTokenizer(r'\w+')
                 abstractWords = tokenizer.tokenize(abstract)

@@ -66,8 +66,7 @@ entity_text_array = np.unique(entity_text_array)
 
 from sklearn.feature_extraction.text import TfidfVectorizer
 
-vect = TfidfVectorizer(sublinear_tf=True, max_df=0.5, analyzer='word',
- stop_words='english', vocabulary=entity_text_array)
+vect = TfidfVectorizer(sublinear_tf=True, max_df=0.5, analyzer='word', stop_words='english', vocabulary=entity_text_array)
 corpus_tf_idf = vect.fit_transform(corpus)
 
 # ################### #
